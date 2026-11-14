@@ -1,0 +1,10 @@
+{
+  "description": "This web application offers a professional platform for Pondok Pesantren Al-Hidayah, providing easy access to information for parents, students, and teachers.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
