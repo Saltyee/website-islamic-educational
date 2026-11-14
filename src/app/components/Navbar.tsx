@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link, NavLink, useNavigate } from "react-router";
+import { Link, NavLink, useLocation, useNavigate } from "react-router";
 import { Menu, X, BookOpen } from "lucide-react";
 
 const navLinks = [
@@ -14,6 +14,8 @@ export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const navigate = useNavigate();
+  // Router pathname excludes the base path, so this works on GitHub Pages too
+  const { pathname } = useLocation();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -25,7 +27,7 @@ export function Navbar() {
     setIsOpen(false);
     if (to.includes("#")) {
       const [path, hash] = to.split("#");
-      if (window.location.pathname !== (path || "/")) {
+      if (pathname !== (path || "/")) {
         navigate(path || "/");
         setTimeout(() => {
           document.getElementById(hash)?.scrollIntoView({ behavior: "smooth" });

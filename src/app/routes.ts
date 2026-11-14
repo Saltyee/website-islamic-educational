@@ -24,4 +24,7 @@ export const router = createBrowserRouter([
       { path: "*", Component: NotFoundPage },
     ],
   },
-]);
+], {
+  // "/" locally; "/<repo-name>/" when built for GitHub Pages (see .github/workflows/deploy.yml)
+  basename: import.meta.env.BASE_URL,
+});
